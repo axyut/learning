@@ -1,0 +1,60 @@
+
+sqllite3  -> in terminal to open sql cli
+commands can be small letter as well but capital is industry standard
+
+see all ===> SELECT * from table_name
+see table ==> .tables
+see schema ==> .schema
+exit ==> .exit
+SELECT columns FROM table    -> columns =col title names table =table names
+
+
+
+#---------      CRUD     ----------#
+
+CREATE  ->INSERT   
+READ   -> SELECT
+UPDATE   example ==> UPDATE table SET colm_title = "The Office" WHERE title = "Thevoffice"
+DELETE   or DROP   ==> DROP TABLE <name>
+
+
+
+modifiers use-> SELECT DISTINCT(UPPER(columns)) FROM table
+AVG = average
+COUNT = number of value
+DISTINCT= only gives ones (without repeat) 
+LOWER =  lower case only
+MAX = maximum data
+MIN = minimum from data in col 
+UPPER = uppercase
+
+qualify selections use-> SELECT columns from table LIMIT 10
+WHERE    SELECT title FROM favorites WHERE title="office"
+LIKE 	SELECT COUNT(title) FROM favorites WHERE title LIKE"%office%"
+ORDER BY 
+LIMIT 
+GROUP BY
+
+
+#------    Importing a csv file    -----#   
+
+sqlite3 databaseName.db
+.mode csv
+.import fileName.csv table_name
+
+
+#------------   RELATIONAL database   ----------#
+
+CREATE TABLE shows (id INTEGER, title NOT NULL, PRIMARY KEY(id));
+CREATE TABLE genres (show_id INTEGER, genre TEXT NOT NULL, FOREIGN KEY(show_id) REFERENCES shows(id));
+
+use--> SELECT title FROM shows WHERE id IN (SELECT show_id FROM genres WHERE genre= "Comdey") ORDER BY title;
+use--> INSERT INTO shows (title) VALUES("Seinfield");
+		INSERT INTO genres (show_id, genre) VALUES(159, "Comdey");   // get the id 159 by  SELECT * FROM shows WHERE title= "Sienfield";
+		
+		
+		
+Primary  key and foreign key
+
+in for muktiple
+= for single

@@ -1,0 +1,112 @@
+building Dockerfile
+
+#specify base image
+FROM node:alpine    
+
+#set working directory to '/app' in the container
+WORKDIR /app       
+
+#copy over only package.json file
+COPY package.json ./   
+
+#install required dependencies
+RUN npm install        
+
+#copy over all of our source code
+COPY ./ ./             
+
+#set the command to run when container starts up
+CMD ["npm", "start"]   
+
+
+
+building docker container => docker build .
+running built container => docker run <containerID>
+
+building with tag =>  docker -t posts_service .
+running =>  docker run posts_service
+
+if -t posts:0.0.1   version not given docker will deafult give latest
+
+creating docker shell/cmd => docker run -it <containerID> sh
+        can be used to execute comands 
+
+docker ps => print out information
+docker run <containerID>
+
+
+
+
+Kubernetes   tab size should be exactly 2
+.yaml config file
+apiVersion: v1      => specifies set of objects we want k8s to look at
+kind: Pod           => the type of object we want to create (Pod, Job, Deployment, Service)
+metadata:           => options for object we want to create 
+  name: posts       => when pod is created, it is given this name
+spec:               => attributes for object we want to create 
+  containers:       => we can create multiple containers in a single pod
+    - name: posts   => dash(-) means one container in an array of many, containers name can also be same name as pod
+      image: axyut/posts:0.0.1  => version number because docker will default write latest
+
+
+commands
+
+kubectl get pods  =>print information about runnig pods
+kubectl exec -it [pod_name] [cmd]   => execute given command in running pod
+    kubectl exec -it posts logs
+kubectl logs [pod_name]
+kubectl delete pod [pod_name]  => delete given pod
+kubectl delete pods -all
+kubectl apply -f [config_file_name]    => to process the config file
+kubectl decribe pod [pod_name]    => prints information about running pod
+
+
+set alias kubectl to k for easier
+minikube stop  == stop
+minikube profile  == see profiles
+minikube start -p <profile_name> --driver=docker --nodes 2 --addons <name> to start with proper settings
+minikube delete --all --purge   => delete all minikube information from pc without uninstalling it
+minikube image load <dockerImage>
+minikube addons disable <name>
+
+ ###################################################
+eval $(minikube -p minikube docker-env)   it is in my .profile and .bashrc because to execute it everytime i open my terminal, hope: to build docker image and let it know to minikube docker register, kubectl can only make image on local that is known to registry
+otherwise kubectl starts to look for it in online, to deny it wirite in yaml config file of kubectl, imagePullPolicy: Never
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: hello-world
+spec:
+  template:
+    metadata:
+      name: hello-world-pod
+    spec:
+      containers:
+      - name: hello-world
+        image: forketyfork/hello-world
+        imagePullPolicy: Never
+      restartPolicy: Never
+
+link= https://medium.com/swlh/how-to-run-locally-built-docker-images-in-kubernetes-b28fbc32cc1d
+ ########################################################
+
+######### multinode
+minikube start --nodes 2    => to start multiple nodes cluster
+k get nodes  (see running nodes)
+minikube status -p <node_name>
+
+############## highmemory
+minikube start --memory 8192 --cpus 2
+   ----- Set/modify config files in cluster
+        $ minikube stop
+        $ minikube config set memory 8192
+        $ minikube config set cpus 4
+        $ minikube start
+get current cluster informations => minikube config options
+
+
+
+
+
+minikube start --driver=docker --addons ingress 
+

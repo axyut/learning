@@ -1,0 +1,44 @@
+ctrl + n -> explore file tree
+  m -> mark the file
+  a -> create new file
+  c -> copy file
+  p -> paste file
+  r -> rename file
+
+space f f -> find files search
+  space f b -> search accross only open files
+
+space c h -> open commands cheatsheeet
+
+ctrl + (h j k k) -> move around in panes
+  :vsp -> vertcal split
+  :sp -> split
+
+space r n -> toggle relative line number
+space n -> on off absolute line number
+
+tab -> cycle through tabs
+shift tab -> reverse cycle tabs
+space x -> close current tab (buffer)
+
+## terminal
+space h -> horizontal terminal
+space v -> vertical window
+  'exit' command -> exit terminal
+
+## customization  ~./.config/nvim/lua/custom
+  chadrc.lua  -> edit neochad plugins customization
+  init.lua  -> edit nvim settings
+    to install new plugin -> add to the plugins.lua and -> :Lazy sync
+  lsp 
+    install the server by -> :MasonInstallAll
+    after configing in configs/lspconfig.lua
+
+  ## go
+    go to gopher.nvim github to see all snippets or useful commands that can be launcehed from :commands
+    :GoTagAdd json  -> will add the json to the scructs in go 
+    :GoTagAdd yaml  -> same with yaml
+    :GoMod tidy
+    :GoGet command within neovim
+    :GoTestsAll  -> auto gen test boilerplates
+    :GoIfErr  -> auto gen error blocks

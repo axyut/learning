@@ -1,0 +1,29 @@
+sudo apt-get update
+sudo apt-get install apache2
+sudo systemctl start apache2.service
+visit localhost    (http://localhost:80)
+files at /var/www/html
+
+other
+sudo systemctl stop apache2.service
+sudo systemctl restart apache2.service
+sudo systemctl reload apache2.service   
+
+
+logs
+Apache creates log files for any errors it generates in the file /var/log/apache2/error.log.
+
+It also creates access logs for its interactions with clients in the file /var/log/apache2/access.log.
+
+Here’s a list of other essential directories:
+
+/etc/apache2/apache2.conf – This is the main Apache configuration file and controls everything Apache does on your system. Changes here affect all the websites hosted on this machine.
+/etc/apache2/ports.conf – The port configuration file. You can customize the ports Apache monitors using this file. By default, Port 80 is configured for http traffic.
+/etc/apache2/sites-available – Storage for Apache virtual host files. A virtual host is a record of one of the websites hosted on the server.
+/etc/apache2/sites-enabled – This directory holds websites that are ready to serve clients. The a2ensite command is used on a virtual host file in the sites-available directory to add sites to this location.
+
+
+
+apachhe modules
+sudo a2enmod name_of_module    => enable
+sudo a2dismod name_of_module   => disable

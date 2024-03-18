@@ -1,0 +1,35 @@
+http or https protocol is important
+curl http://link.com  => fetches the page html or page source
+curl -o /path/text.html http://url
+
+#redirected websites, website that redirect from given url
+curl -L http://abcd.com if http doesnt exists then redirect to https
+
+#information query respone header sent by the server
+curl -I https://google.com // only headers
+or -i // whole
+
+# connection details and tls handshake
+curl -v https://google.com
+
+# post requests
+##bruteforce
+curl --data "login=admin&password=pwd" https://abc.com/loginpage
+
+#download the data/page source to fie
+curl -o /home/axyut/Desktop/text.json https://jsonplaceholder.typicode.com/posts 
+
+# to send data  POST request
+--data or -d 
+curl -d "title=Hello&body=Hello World" https://jsonplaceholder/posts
+curl -X POST https://jsonplaceholder.com/posts -d ""
+# PUT rquest
+curl -X PUT -d "" url
+# DELERE req
+curl -X DELETE https://jsonplaceholder/posts/2
+
+-X means in all requests (not required for POST or get) use very rearely
+
+## url globbing mutiple similar urls together
+curl https://example.com/[1-9].html -o save_#1.html
+curl https://jsonplaceholder.com/posts/[1-100]/ -o GETid_#1.json

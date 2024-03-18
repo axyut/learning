@@ -1,0 +1,18 @@
+extension is .sh  => executable
+bash doSTH.sh     => command to execute
+echo $SHELL       => to see current shell interpreter
+
+#!/usr/bin/bash   => tell the shell from shere to exetucute 
+after writing this at beggining or top, we don't need to execute writing  bash abc.sh
+directly ./abc.sh
+
+# output to a file
+echo Hello World! > hello.txt   +> overwrites
+echo Hello Me >> hello.txt      +> put to next line
+
+line count
+wc -w < hello.txt
+# input to file
+cat << EOF
+
+

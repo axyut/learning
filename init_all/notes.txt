@@ -1,0 +1,27 @@
+#creating desktop application from instlled executable
+[Desktop Entry]
+Type=Application
+Name=<application_name>
+Exec=/path/to/executable
+Icon=/path/to/file.png
+
+save as name.desktop and copy to /usr/share/applications/
+~/.local/share/applications/ for visibilty of this user only
+
+#Example
+[Desktop Entry]
+Type=Application
+Name=postman
+Exec=/opt/Postman/app/Postman
+Icon=/opt/Postman/app/icons/icon_128x128.png
+
+#save it then copy -> cp postman.desktop /usr/share/applications
+
+
+#linking to be opened from terminal 
+ln -s <address of shortcut or executable > /usr/share/applications
+example : ln -s /opt/Postman/Postman /usr/share/applications
+
+
+#deleeted
+/usr/share/wordLists/ contains 1.6 gbs
