@@ -54,15 +54,20 @@ int main() {
         return 1;
     }
 
-    SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255); // White background
-    SDL_RenderClear(renderer); // Clear the renderer with white color
+    const Uint32 startMs = SDL_GetTicks();
+    while (SDL_GetTicks() - startMs < 5000) {
+        SDL_PumpEvents();
+        SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255); // White background
+        SDL_RenderClear(renderer); // Clear the renderer with white color
 
-    SDL_SetRenderDrawColor(renderer, 255, 0, 0, 255); // Red color
-    DDALine(renderer, 100, 100, 300, 200); // Draw line from (100, 100) to (300, 200)
+        SDL_SetRenderDrawColor(renderer, 255, 0, 0, 255); // Red color
+        DDALine(renderer, 100, 100, 300, 200); // Draw line from (100, 100) to (300, 200)
 
-    SDL_RenderPresent(renderer);
+        SDL_RenderPresent(renderer);
+    }
 
-    SDL_Delay(10000); // Wait for 3 seconds before quitting
+
+    // SDL_Delay(10000); // Wait for 3 seconds before quitting
 
     SDL_DestroyRenderer(renderer);
     SDL_DestroyWindow(window);

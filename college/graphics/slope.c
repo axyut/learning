@@ -1,4 +1,5 @@
 #include <SDL2/SDL.h>
+#include <unistd.h>
 
 int main() {
     // Initialize SDL
@@ -27,17 +28,23 @@ int main() {
         return 1;
     }
 
-    // Set draw color (red in this case)
-    SDL_SetRenderDrawColor(renderer, 255, 0, 0, 255);
+    // this way for kde plasma, for other DEs, SDL_Delay(5000) should work, without the while loop & SDL_PumpEvents()
+    const Uint32 startMs = SDL_GetTicks();
+    while( SDL_GetTicks() - startMs < 5000 )
+    {
+        SDL_PumpEvents();
+        // Set draw color (red in this case)
+        SDL_SetRenderDrawColor(renderer, 255, 0, 0, 255);
 
-    // Draw a line
-    SDL_RenderDrawLine(renderer, 100, 100, 300, 200);
+        // Draw a line
+        SDL_RenderDrawLine(renderer, 100, 100, 300, 200);
 
-    // Render the changes
-    SDL_RenderPresent(renderer);
+        // Render the changes
+        SDL_RenderPresent(renderer);
+    }
 
     // Wait for 10 seconds before quitting
-    SDL_Delay(10 * 1000);
+    // SDL_Delay(10 * 1000);
 
     // Cleanup
     SDL_DestroyRenderer(renderer);
