@@ -9,16 +9,13 @@ $userId = $_SESSION["userId"];
 $username = $_SESSION["username"];
 
 ?>
-
 <div class="profile-container">
     <table>
-        
         <tr>
             <td>
                 <?php
                      echo "<h3>Gweets</h3>";
                     $query = "SELECT * FROM posts WHERE userId= :userId";
-                    
                     $stmt = $db->prepare($query);
                     $stmt->bindValue(':userId', $userId);
                     
@@ -57,20 +54,17 @@ $username = $_SESSION["username"];
                             </button>
                         </form>
                             ";
-                       
                         echo "</label> ";
                     }
                 ?>
             </td>
             <td>
                 <?php
-                 
                     if(isset($_POST['showCommentsClick'])) {
                         $userId = $_POST['userId'];
                         $postId = $_POST['postId'];
                         
                         $query = "SELECT title, username FROM comments WHERE userId=:userId AND postId=:postId";
-                    
                         $stmt = $db->prepare($query);
                         $stmt->bindValue(':postId', $postId);
                         $stmt->bindValue(':userId', $userId);
@@ -88,24 +82,16 @@ $username = $_SESSION["username"];
                                 </label>
                                 ";
                             }
-                            
-                           
                         } else{
                               echo "No Comments</label>";
                         }
                         echo "</label>";  
-                          
-                            
-                        
                     }
                 ?>
             </td>
             <td>
-            
             <?php   
-                    
                     $query = "SELECT username,userId FROM users WHERE userId IN (SELECT followerId from followers WHERE userId=:userId )";
-                    
                     $stmt = $db->prepare($query);
                     $stmt->bindValue(':userId', $userId);
                     
@@ -129,7 +115,6 @@ $username = $_SESSION["username"];
                     echo "</label>";
                     
                     $query = "SELECT username,userId FROM users WHERE userId IN (SELECT followingId from followings WHERE userId=:userId )";
-                    
                     $stmt = $db->prepare($query);
                     $stmt->bindValue(':userId', $userId);
                     
@@ -155,17 +140,7 @@ $username = $_SESSION["username"];
             </td>
         </tr>
     </table>
-    
-    
-     
-    
-    
-         
-     
 </div>
-
-
 <?php
-
 require_once '../includes/footer.php';
 ?>

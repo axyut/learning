@@ -16,11 +16,9 @@ if (isset($_POST['editClick'])) {
     $result = $stmt->execute();
 
     if ($result) {
-        
         header("Location: ../pages/profile.php?msg=EditSuccessfull");
         exit();
     } else {
-        
         header("Location: ../pages/profile.php?msg=Error!tryAgain");
         exit();
     }
@@ -37,13 +35,10 @@ if (isset($_POST['deleteClick'])) {
     $stmt->bindValue(':postId', $postId);
 
     $result = $stmt->execute();
-
     if ($result) {
-        
         header("Location: ../pages/profile.php?msg=DeletionSuccessfull");
         exit();
     } else {
-        
         header("Location: ../pages/profile.php?msg=Error!tryAgain");
         exit();
     }
@@ -64,13 +59,10 @@ if (isset($_POST['addCommentClick'])) {
     $stmt->bindValue(':title', $title);
 
     $result = $stmt->execute();
-
     if ($result) {
-        
         header("Location: ../pages/profile.php?msg=CommentPostedSuccessfully");
         exit();
     } else {
-        
         header("Location: ../pages/profile.php?msg=Error!tryAgain");
         exit();
     }
@@ -91,17 +83,12 @@ if (isset($_POST['addCommentHomeClick'])) {
     $stmt->bindValue(':title', $title);
 
     $result = $stmt->execute();
-
     if ($result) {
-        
         header("Location: ../pages/home.php?msg=CommentPostedSuccessfully");
         exit();
     } else {
-        
         header("Location: ../pages/home.php?msg=Error!tryAgain");
         exit();
     }
 }
-
-
 ?>

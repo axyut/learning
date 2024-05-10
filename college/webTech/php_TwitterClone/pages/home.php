@@ -3,15 +3,12 @@ session_start();
 require_once '../includes/header.php';
 
 $db = new SQLite3("../database/gwitter.db");
-
 $username = $_SESSION["username"];
 $userId = $_SESSION["userId"];
 
 ?>
-
 <div class="home-container">
     <table>
-        
         <tr>
             <td>
                 <form action="../pages/home.php" method="post">
@@ -29,14 +26,11 @@ $userId = $_SESSION["userId"];
                         $stmt->bindValue(':username', $username);
                         $stmt->bindValue(':title', $title);
                     
-
                         $result = $stmt->execute();
                         if ($result) {
-                           
                             header("Location: ../pages/home.php?msg=PostSuccessfull");
                             exit();
                         } else {
-                
                             header("Location: ../pages/home.php?msg=Error!tryAgain");
                             exit();
                         }
@@ -82,13 +76,11 @@ $userId = $_SESSION["userId"];
             </td>
             <td>
             <?php
-                 
                  if(isset($_POST['showCommentsClick'])) {
                      $userId = $_POST['userId'];
                      $postId = $_POST['postId'];
                      
                      $query = "SELECT title, username FROM comments WHERE userId=:userId AND postId=:postId";
-                 
                      $stmt = $db->prepare($query);
                      $stmt->bindValue(':postId', $postId);
                      $stmt->bindValue(':userId', $userId);
@@ -106,23 +98,16 @@ $userId = $_SESSION["userId"];
                              </label>
                              ";
                          }
-                         
-                        
                      } else{
                            echo "No Comments</label>";
                      }
                      echo "</label>";  
-                       
-                         
-                     
                  }
             ?>
             </td>
             <td>
                 <?php
-               
                     $query = "SELECT username, userId FROM users WHERE userId NOT IN (SELECT followingId from followings WHERE userId=:userId ) AND NOT userId= :userId";
-                    
                     $stmt = $db->prepare($query);
                     $stmt->bindValue(':userId', $userId);
                     
@@ -131,7 +116,6 @@ $userId = $_SESSION["userId"];
                     echo "<h3> From your contacts </h3>";
                     $count = 1;
                     while ($row = $result->fetchArray()) {
-
                         $username = $row['username'];
                         $publicUserId = $row['userId'];
                         echo "<label>".$count.". ".$username."
@@ -150,10 +134,7 @@ $userId = $_SESSION["userId"];
                 ?>
             </td>
         </tr>
-
     </table>
-    
-
 </div>
 <?php
 require_once '../includes/footer.php';

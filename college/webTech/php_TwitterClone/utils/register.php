@@ -1,7 +1,4 @@
-
-
 <?php
-    
 $username = $_POST['username'];
 $password = $_POST['password'];
 $cPassword = $_POST['cPassword'];
@@ -21,13 +18,10 @@ if (empty($username) || empty($password) || empty($cPassword)){
 }
 
 $db = new SQLite3("../database/gwitter.db");
-
 // checking if username already exists
 $query = "SELECT username FROM users WHERE username = :username";
-
 $stmt = $db->prepare($query);
 $stmt->bindValue(':username', $username);
-
 $result = $stmt->execute();
 
 while ($row = $result->fetchArray()) {
@@ -39,14 +33,11 @@ while ($row = $result->fetchArray()) {
 
 // Inerting into database
 $query = "INSERT INTO users ('username', 'password') VALUES (:username, :password)";
-
 $stmt = $db->prepare($query);
 $stmt->bindValue(':username', $username);
 $stmt->bindValue(':password', $password);
 
 $result = $stmt->execute();
-
-// Check if the query was successful
 if ($result) {
     header("Location: ../index.php?msg=UserCreatedSuccessfully");
     exit();
@@ -54,6 +45,4 @@ if ($result) {
     echo "Failed to insert username.";
     die();
 }
-
-
 ?>

@@ -13,13 +13,10 @@ if (isset($_POST['followClick'])) {
     $stmt->bindValue(':followingId', $followingId);
 
     $result = $stmt->execute();
-
     if ($result) {
-        
         header("Location: ../pages/home.php?msg=FollowSuccessfull");
         exit();
     } else {
-        
         header("Location: ../pages/home.php?msg=Error!tryAgain");
         exit();
     }
@@ -37,13 +34,10 @@ if (isset($_POST['unfollowClick'])) {
     $stmt->bindValue(':followingId', $followingId);
 
     $result = $stmt->execute();
-
     if ($result) {
-        
         header("Location: ../pages/profile.php?msg=UnfollowSuccessfull");
         exit();
     } else {
-        
         header("Location: ../pages/profile.php?msg=Error!tryAgain");
         exit();
     }
@@ -61,13 +55,10 @@ if (isset($_POST['removeClick'])) {
     $stmt->bindValue(':followerId', $followerId);
 
     $result = $stmt->execute();
-
     if ($result) {
-        
         header("Location: ../pages/profile.php?msg=Removed$followerUsername");
         exit();
     } else {
-        
         header("Location: ../pages/profile.php?msg=Error!tryAgain");
         exit();
     }

@@ -1,9 +1,7 @@
 <?php
 //include 'database/connection.php';
-
 $username = $_POST['username'];
 $password = $_POST['password'];
-
 
 if (empty($username) || empty($password)){
     header("Location: ../index.php?error=emptyFields");
@@ -15,7 +13,6 @@ if (empty($username) || empty($password)){
 $UserExists = 0;
 
 $db = new SQLite3("../database/gwitter.db");
-
 $results = $db->query('SELECT * FROM users');
 
 while ($row = $results->fetchArray()) {
@@ -33,5 +30,4 @@ if ($UserExists != 1){
     echo "Username or password invalid!";
     exit();
 }
-
 ?>

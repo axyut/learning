@@ -1,11 +1,8 @@
-
 <html>
-
 <head>
     <title> Gwitter </title>
     <link rel="stylesheet" type="text/css" href="../styles/root.css">
 </head>
-
 <body>
     <header>
         <nav>
@@ -26,6 +23,5 @@
                 </li>
             </ul>
                </div>
-            
         </nav>
     </header>
