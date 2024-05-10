@@ -63,6 +63,8 @@ layout regs # to see registers
     run
     stepi # to step through the program
     stepi # info registers eax -> to see eax value
+        info registers eax
+        x/x $eax shows address and value
     stepi
 layout regs # to see registers
 ```
