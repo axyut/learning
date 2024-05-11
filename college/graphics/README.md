@@ -35,3 +35,8 @@
 ❯ g++ slope.cpp -o slope `sdl2-config --cflags --libs`
 ❯ ./slope
 ```
+
+```
+❯ g++ redRect.cpp -o red -lglut -lGL
+❯ ./red
+```

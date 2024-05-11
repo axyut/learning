@@ -17,11 +17,15 @@ ctrl + (h j k k) -> move around in panes
 space r n -> toggle relative line number
 space n -> on off absolute line number
 
-tab -> cycle through tabs
+shift h, l (H,L) -> cycle through tabs
 shift tab -> reverse cycle tabs
 space x -> close current tab (buffer)
 
+code suggestion available -> space c a
+function/code/variable info -> K (shift k)
+
 ## terminal
+ctrl / -> show/hide terminal
 space h -> horizontal terminal
 space v -> vertical window
   'exit' command -> exit terminal
