@@ -1,12 +1,12 @@
-package main
+package stack
 
 import "fmt"
 
 var MAX_SIZE = 5
-var stack [5]int
+var stacks [5]int
 var top = -1
 
-func main() {
+func Run() {
 out:
 	for {
 		fmt.Println("\nImplementation of stack.\n0. Exit\n1. Push\n2. Pop\n3. Display")
@@ -22,43 +22,34 @@ out:
 			fmt.Print("Input Number to Push: ")
 			fmt.Scanln(&num)
 			push(num)
-			break
 		case 2:
 			pop()
-			break
 		case 3:
 			display()
-			break
 		case 0:
 			break out
 		}
 	}
 }
 func isFull() bool {
-	if top == MAX_SIZE {
-		return true
-	}
-	return false
+	return top == MAX_SIZE-1
 }
 func push(num int) {
 	if !isFull() {
 		top += 1
-		stack[top] = num
+		stacks[top] = num
 		fmt.Println("Pushed ", num, " to the stack.")
 	} else {
 		fmt.Println("Stack Full.")
 	}
 }
 func isEmpty() bool {
-	if top == -1 {
-		return true
-	}
-	return false
+	return top == -1
 }
 func pop() {
 	if !isEmpty() {
-		removed := stack[top]
-		stack[top] = 0
+		removed := stacks[top]
+		stacks[top] = 0
 		top -= 1
 		fmt.Println("Removed: ", removed)
 	} else {
@@ -67,8 +58,8 @@ func pop() {
 }
 func display() {
 	fmt.Println("\n------- STACK -------")
-	for i := len(stack) - 1; i >= 0; i-- {
-		fmt.Println(i+1, ". ", stack[i])
+	for i := len(stacks) - 1; i >= 0; i-- {
+		fmt.Println(i+1, ". ", stacks[i])
 	}
 	fmt.Print("-----------------------")
 }
@@ -107,4 +98,3 @@ func display() {
 //     fmt.Println(stack.Length())
 //     fmt.Println(stack.Pop())
 // }
-
