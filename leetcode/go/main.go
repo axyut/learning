@@ -1,5 +1,7 @@
 package main
 
 func main() {
-	shiftGridExecute()
+	// shiftGridExecute()
+	// CardMovementExecute()
+	DivArraySubset_1()
 }
